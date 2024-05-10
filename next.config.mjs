@@ -3,7 +3,6 @@ const nextConfig = {
     experimental: {
         NEXTAUTH_URL: process.env.NEXTAUTH_URL,
         appDir: true,
-        NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     },
     
     images: {
