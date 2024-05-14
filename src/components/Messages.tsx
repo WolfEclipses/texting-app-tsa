@@ -57,8 +57,8 @@ const Messages: FC<MessagesProps> = ({initialMessages, sessionId, chatPartner, s
                                 'order-2 items-start': !isCurrentUser,
                             })}>
                                 <span className={cn('px-4 py-2 rounded-lg inline-block', {
-                                    'bg-indigo-600 text-white': isCurrentUser,
-                                    'bg-gray-200 text-gray-900': isCurrentUser,
+                                    'bg-orange-600 text-white': isCurrentUser,
+                                    'bg-gray-200 text-gray-900': !isCurrentUser,
                                     'rounded-br-none': !hasNextMessageFromSameUser && isCurrentUser,
                                     'rounded-bl-none': !hasNextMessageFromSameUser && !isCurrentUser,
                                 })}>
@@ -70,8 +70,8 @@ const Messages: FC<MessagesProps> = ({initialMessages, sessionId, chatPartner, s
                             </div>
 
                             <div className={cn('relative w-6 h-6', {
-                                'order-2': isCurrentUser,
-                                'prder-2': !isCurrentUser,
+                                'order-1': isCurrentUser,
+                                'order-2': !isCurrentUser,
                                 'invisible': hasNextMessageFromSameUser
                             })}>
                                 <Image fill src={isCurrentUser ? (sessionImg as string) : chatPartner.image} alt='Profile picture' referrerPolicy='no-referrer' className='rounded-full'

@@ -53,7 +53,7 @@ const page = async ({params}: PageProps) => {
         <div className='flex sm:items-center justify-between py-3 border-b-2 border-gray-200'>
             <div className='relative flex items-center space-x-4'>
                 <div className='relative'>
-                    <div className='relative w-8 sm:2-12 h-8 sm:h-12'>
+                    <div className='relative w-12 sm:2-12 h-auto sm:h-12'>
                         <Image 
                             fill
                             referrerPolicy='no-referrer'

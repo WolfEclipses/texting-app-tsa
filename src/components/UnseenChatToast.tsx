@@ -34,7 +34,7 @@ const UnseenChatToast: FC<UnseenChatToastProps> = ({t, senderId, sessionId, send
         </a>
 
         <div className='flex border-l border-gray-200'>
-            <button onClick={() => toast.dismiss(t.id)} className='w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-60 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500'>
+            <button onClick={() => toast.dismiss(t.id)} className='w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-orange-60 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500'>
                 Close
             </button>
         </div>
