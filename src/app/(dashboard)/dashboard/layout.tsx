@@ -49,7 +49,7 @@ const Layout = async ({ children }: LayoutProps) => {
 
     const unseenRequestCount = (await fetchRedis('smembers', `user:${session.user.id}:incoming_friend_requests`) as User[]).length
 
-    return (<div className = 'w-full flex h-screen'>
+    return (<div className = 'w-full flex h-screen dark:bg-zinc-900'>
         <div className='flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 dark:bg-zinc-900'>
             <Link href='/dashboard' className='flex h-21 shrink-0'>
                 <Icons.Logo className='h-15 w-auto' />
