@@ -1,6 +1,6 @@
 "use client"
 
-import { Loader2, Moon} from 'lucide-react'
+import { Moon} from 'lucide-react'
 import { ButtonHTMLAttributes, FC, useState } from 'react'
 import toast from 'react-hot-toast'
 import Button from './UI/Button'
@@ -20,7 +20,7 @@ const DarkModeButton: FC<DarkModeProps> = ({ ...props }) => {
     }
     
   }}>
-    <Moon className='w-4 h-4 bg:zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-300 focus:outline-orange-600 ' />
+    <Moon className='w-4 h-4 dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200' />
   </Button>
 }
 export default DarkModeButton

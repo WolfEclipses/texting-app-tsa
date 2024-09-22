@@ -63,7 +63,7 @@ const Messages: FC<MessagesProps> = ({initialMessages, sessionId, chatPartner, s
                                     'rounded-bl-none': !hasNextMessageFromSameUser && !isCurrentUser,
                                 })}>
                                     {message.text}{''}
-                                    <span className='ml-2 text-xs text-gray-400 dark:text-zinc-900'>
+                                    <span className='ml-2 text-xs text-zinc-900'>
                                         {formatTimestamp(message.timestamp)}
                                     </span>
                                 </span>

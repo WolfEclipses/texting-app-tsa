@@ -49,19 +49,19 @@ const Layout = async ({ children }: LayoutProps) => {
 
     const unseenRequestCount = (await fetchRedis('smembers', `user:${session.user.id}:incoming_friend_requests`) as User[]).length
 
-    return (<div className = 'w-full flex h-screen dark:bg-zinc-900'>
-        <div className='flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 dark:bg-zinc-900'>
+    return (<div className = 'w-full flex h-screen dark:bg-zinc-800'>
+        <div className='flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto bg-gray-100 px-6 dark:bg-zinc-900'>
             <Link href='/dashboard' className='flex h-21 shrink-0'>
                 <Icons.Logo className='h-15 w-auto' />
             </Link>
             
             {friends.length > 0 ? (
-                <div className='text-lg font-bold leading-6 text-gray-800 dark:text-zinc-300 text-center'>
+                <div className='text-lg font-bold leading-6 text-gray-800 dark:text-zinc-300 text-center '>
                     Your Chats
                 </div>
             ) : null}
             <nav className='flex flex-1 flex-col'>
-                <ul role='list' className='flex flex-1 flex-col gap-y-7'>
+                <ul role='list' className='flex flex-1 flex-col gap-y-7 '>
                     <li>
                         <SidebarChatList sessionId={session.user.id} friends={friends} />
                     </li>
@@ -75,7 +75,7 @@ const Layout = async ({ children }: LayoutProps) => {
                                 return(
                                     <li key={option.id}>
                                         <Link href={option.href}
-                                        className='text-gray-700 hover:text-orange-600 hover:bg-gray-50 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300'>
+                                        className='text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
                                         <span className='text-gray-400 border-gray-200 group-hover:border-orange-600 group-hover:text-orange-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900'>
                                             <Icon className='h-4 w-4 ' />
                                         </span>
@@ -95,8 +95,8 @@ const Layout = async ({ children }: LayoutProps) => {
                                 return(
                                     <li key={option.id}>
                                         <Link href={option.href}
-                                        className='text-gray-700 hover:text-orange-600 hover:bg-gray-50 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300'>
-                                        <span className='text-gray-400 border-gray-200 group-hover:border-orange-600 group-hover:text-orange-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900'>
+                                        className='text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
+                                        <span className='text-gray-400 border-gray-200 group-hover:border-orange-600 group-hover:text-orange-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900 '>
                                             <Icon className='h-4 w-4' />
                                         </span>
                                         <span className='truncate'>{option.name}</span>
@@ -107,9 +107,9 @@ const Layout = async ({ children }: LayoutProps) => {
                         </ul>
                     </li>
 
-                    <li className='-mx-6 mt-auto flex items-center'>
+                    <li className='-mx-6 mt-auto flex items-center bg-gray-200 dark:bg-neutral-950'>
                         <span className='sr-only'>Your profile</span>
-                        <div className='relative ms-6 h-10 w-10 bg-gray-50 leading-3 items-center flex'>
+                        <div className='relative ms-6 h-10 w-10 leading-3 items-center flex'>
                             <Image
                                 fill
                                 referrerPolicy='no-referrer'
@@ -130,11 +130,11 @@ const Layout = async ({ children }: LayoutProps) => {
                             </div>
                         </div>
 
-                        <span className='hover:text-orange-600 hover:bg-gray-50 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-zinc-900'>
+                        <span className='hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950'>
                             <DarkModeButton className='h-full aspect-square'/>
                         </span>
 
-                        <span className='hover:text-orange-600 hover:bg-gray-50 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-zinc-900 '>
+                        <span className='hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950 '>
                             <SignOutButton className='h-full aspect-square '/>
                         </span>
 
@@ -143,7 +143,7 @@ const Layout = async ({ children }: LayoutProps) => {
             </nav>
         </div>
 
-        <aside className='max-h-screen container py-16 w-full dark:bg-zinc-900'>{children}</aside>
+        <aside className='max-h-screen container py-16 w-full dark:bg-zinc-800'>{children}</aside>
         
     </div>
     )
