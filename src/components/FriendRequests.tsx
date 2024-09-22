@@ -58,18 +58,18 @@ const FriendRequests: FC<FriendRequestsProps> = ({
 
   return ( <>
     {friendRequests.length === 0 ? (
-      <p className='text-sm text-zinc-500'>Nothing to show here...</p> 
+      <p className='text-sm text-zinc-500 dark:text-zinc-300'>Nothing to show here...</p> 
     ) : (
       friendRequests.map((request) => (
         <div key={request.senderId} className='flex gap-4 items-center'>
-          <UserPlus className='text-black' />
+          <UserPlus className='text-black dark:text-zinc-300 ' />
           <p className='font-medium text-lg'>{request.senderEmail}</p>
-          <button onClick={() => acceptFriend(request.senderId)} aria-label ="accept friend" className='w-8 h-8 bg-orange-600 hover:bg-orange-700 grid place-items-center rounded-full transition hover:shadow-md'>
-            <Check className='font-semibold text-white w-3/4 h-3/4' />
+          <button onClick={() => acceptFriend(request.senderId)} aria-label ="accept friend" className='w-8 h-8 bg-green-600 hover:bg-green-700 grid place-items-center rounded-full transition hover:shadow-md'>
+            <Check className='font-semibold text-white w-3/4 h-3/4 dark:text-zinc-300' />
           </button>
 
           <button onClick={() => denyFriend(request.senderId)} aria-label ="deny friend" className='w-8 h-8 bg-red-600 hover:bg-red-700 grid place-items-center rounded-full transition hover:shadow-md'>
-            <X className='font-semibold text-white w-3/4 h-3/4' />
+            <X className='font-semibold text-white w-3/4 h-3/4 dark:text-zinc-300' />
           </button>
         </div>
       ))

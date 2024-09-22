@@ -64,12 +64,12 @@ const page = async ({params}: PageProps) => {
                     </div>
                 </div>
                 <div className='flex flex-col leading-tight'>
-                    <div className='text-xl flex items-center'>
-                        <span className='text-gray-700 mr-3 font-semibold'>
+                    <div className='text-xl flex items-center dark:text-zinc-300'>
+                        <span className='text-gray-700 mr-3 font-semibold dark:text-zinc-300'>
                             {chatPartner.name}
                         </span>
                     </div>
-                    <span className='text-sm text-gray-600'>{chatPartner.email}</span>
+                    <span className='text-sm text-gray-600 dark:text-zinc-300'>{chatPartner.email}</span>
                 </div>
             </div>
         </div>

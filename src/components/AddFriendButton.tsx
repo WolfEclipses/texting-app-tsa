@@ -50,7 +50,7 @@ const AddFriendButton: FC<AddFriendButtonProps> = ({}) => {
   return (<form onSubmit={handleSubmit(onSubmit)} className='max-w-sm'>
         <label 
         htmlFor="email" 
-        className='block text-m font-medium leading-6 text-gray-900'>
+        className='block text-m font-medium leading-6 text-gray-900 dark:text-zinc-300'>
             Add friend by E-Mail
         </label>
         <div className='mt-2 flex gap-4'>
@@ -62,7 +62,7 @@ const AddFriendButton: FC<AddFriendButtonProps> = ({}) => {
             />
             <Button>Add</Button>
         </div>
-        <p className='mt-1 text-sm text-red-600'>{errors.email?.message}</p>
+        <p className='mt-1 text-sm text-red-600 '>{errors.email?.message}</p>
         {showSuccessState ? (
             <p className='mt-1 text-sm text-green-600'>Friend request sent!</p>
         ) : null}
