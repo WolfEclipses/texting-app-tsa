@@ -13,8 +13,13 @@ interface ChatInputProps {
     chatId: string;
 }
 
-const GIPHY_API_KEY = 'BJ6EbQoZ3M9Cl9ctsznXIHd0Sd8IpJXF'; // Replace with your Giphy API key
-const TENOR_API_KEY = 'AIzaSyDvRWF-e1mGxBzwikC9AW-hYFSR4LxtnTc'; // Replace with your Tenor API key
+
+const GIPHY_API_KEY = process.env.GIPHY_API_KEY // Replace with your Giphy API key
+const TENOR_API_KEY = process.env.NEXT_PUBLIC_TENOR_API_KEY || '';
+
+if (!TENOR_API_KEY) {
+    throw new Error("TENOR_API_KEY is not defined in the environment variables");
+}// Replace with your Tenor API key
 
 const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
