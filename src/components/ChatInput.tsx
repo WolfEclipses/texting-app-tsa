@@ -14,7 +14,7 @@ interface ChatInputProps {
 }
 
 
-const GIPHY_API_KEY = process.env.GIPHY_API_KEY // Replace with your Giphy API key
+const GIPHY_API_KEY = process.env.NEXT_PUBLIC_GIPHY_API_KEY // Replace with your Giphy API key
 const TENOR_API_KEY = process.env.NEXT_PUBLIC_TENOR_API_KEY || '';
 
 if (!TENOR_API_KEY) {
