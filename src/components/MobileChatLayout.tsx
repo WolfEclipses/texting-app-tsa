@@ -1,23 +1,26 @@
-import FriendRequestsSidebarOption from '@/components/FriendRequestsSidebarOption'
-import { Icon, Icons } from '@/components/Icons'
-import SidebarChatList from '@/components/SidebarChatList'
-import SignOutButton from '@/components/SignOutButton'
-import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
-import { fetchRedis } from '@/helpers/redis'
-import { authOptions } from '@/lib/auth'
-import { getServerSession } from 'next-auth'
+'use client'
+
+import { Transition, Dialog } from '@headlessui/react'
+import { icons, Menu, Settings, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import { ReactNode} from 'react'
-import { Settings } from 'lucide-react'
-import MobileChatLayout from '@/components/MobileChatLayout'
+import { FC, Fragment, useEffect, useState } from 'react'
+import { Icons } from './Icons'
+import SignOutButton from './SignOutButton'
+import Button, { buttonVariants } from './UI/Button'
+import FriendRequestsSidebarOption from './FriendRequestsSidebarOption'
+import SidebarChatList from './SidebarChatList'
+import { Session } from 'next-auth'
+import { usePathname } from 'next/navigation'
 import { SidebarOption } from '@/types/typings'
 
-interface LayoutProps {
-    children: ReactNode
+interface MobileChatLayoutProps {
+  friends: User[]
+  session: Session
+  sidebarOptions: SidebarOption[]
+  unseenRequestCount: number
 }
- 
+
 const sidebarOptions: SidebarOption[] = [
     {
         id: 1,
@@ -36,27 +39,64 @@ const sidebarOptions1: SidebarOption[] = [
     },
 ]
 
+const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebarOptions, unseenRequestCount }) => {
+  const [open, setOpen] = useState<boolean>(false)
 
-const Layout = async ({ children }: LayoutProps) => {
-    
-    const session = await getServerSession(authOptions)
-    if(!session) notFound()
+  const pathname = usePathname()
 
-    const friends = await getFriendsByUserId(session.user.id)
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
-    const unseenRequestCount = (await fetchRedis('smembers', `user:${session.user.id}:incoming_friend_requests`) as User[]).length
-
-    return (
-    <div className = 'w-full flex h-screen dark:bg-zinc-800'>
-        <div className='md:invisible bg-gray-100 dark:bg-zinc-900'>
-            <MobileChatLayout friends={friends} session={session} unseenRequestCount={unseenRequestCount} sidebarOptions={sidebarOptions}/>
-        </div>
-        <div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto bg-gray-100 px-6 dark:bg-zinc-900'>
-            <Link href='/dashboard' className='flex h-21 shrink-0'>
-                <Icons.Logo className='h-15 w-auto' />
+  return (
+    <div className='fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4 dark:bg-zinc-900'>
+      <div className='w-full flex justify-between items-center'>
+        <div className='dark:bg-zinc-900 rounded-md w-autow-auto h-auto dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200'>
+            <Link href='/dashboard'className='flex h-12 shrink-0'>
+                <Icons.Logo className='h-12 w-auto' />
             </Link>
-            
-            {friends.length > 0 ? (
+        </div>
+        <Button onClick={() => setOpen(true)} className='gap-4 bg-zinc-900 hover:text-orange-600'>
+          Menu <Menu className='h-6 w-6' />
+        </Button>
+      </div>
+      <Transition.Root show={open} as={Fragment}>
+        <Dialog as='div' className='relative z-10' onClose={setOpen}>
+          <div className='fixed inset-0' />
+
+          <div className='fixed inset-0 overflow-hidden'>
+            <div className='absolute inset-0 overflow-hidden'>
+              <div className='pointer-events-none fixed inset-y-0 left-0 flex max-w-full pr-10'>
+                <Transition.Child
+                  as={Fragment}
+                  enter='transform transition ease-in-out duration-500 sm:duration-700'
+                  enterFrom='-translate-x-full'
+                  enterTo='translate-x-0'
+                  leave='transform transition ease-in-out duration-500 sm:duration-700'
+                  leaveFrom='translate-x-0'
+                  leaveTo='-translate-x-full'>
+                  <Dialog.Panel className='pointer-events-auto w-screen max-w-md'>
+                    <div className='flex h-full flex-col overflow-hidden bg-gray-100 dark:bg-zinc-800 py-6 shadow-xl'>
+                      <div className='px-4 sm:px-6'>
+                        <div className='flex items-start justify-between'>
+                          <Dialog.Title className='text-xl text-base font-bold leading-6 text-gray-800 dark:text-zinc-300 text-center'>
+                            Dashboard
+                          </Dialog.Title>
+                          <div className='ml-3 flex h-7 items-center'>
+                            <button
+                              type='button'
+                              className='rounded-md bg-white dark:bg-zinc-800 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2'
+                              onClick={() => setOpen(false)}>
+                              <span className='sr-only'>Close panel</span>
+                              <X className='h-6 w-6' aria-hidden='true' />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='relative mt-6 flex-1 px-4 sm:px-6'>
+                        {/* Content */}
+
+                        {friends.length > 0 ? (
                 <div className='text-lg font-bold leading-6 text-gray-800 dark:text-zinc-300 text-center '>
                     Your Chats
                 </div>
@@ -146,14 +186,19 @@ const Layout = async ({ children }: LayoutProps) => {
                     </li>
                 </ul>
             </nav>
-        </div>
-        
-        <aside className='max-h-screen container py-16 w-full dark:bg-zinc-800'>{children}</aside>   
-    </div>
-    
-    )
 
-    
+                        {/* content end */}
+                      </div>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
+    </div>
+  )
 }
 
-export default Layout
+export default MobileChatLayout

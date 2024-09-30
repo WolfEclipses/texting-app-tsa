@@ -2,6 +2,7 @@ import { fetchRedis } from "@/helpers/redis";
 import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
 import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 import { db } from "./db";
 
 function getGoogleCredentials() {
@@ -14,6 +15,21 @@ function getGoogleCredentials() {
 
     if(!clientSecret || clientSecret.length === 0) {
         throw new Error('Missing GOOGLE_CLIENT_SECRET')
+    }
+
+    return {clientId, clientSecret}
+}
+
+function getGithubCredentials() {
+    const clientId = process.env.GITHUB_CLIENT_ID
+    const clientSecret = process.env.GITHUB_CLIENT_SECRET
+
+    if(!clientId || clientId.length === 0) {
+        throw new Error('Missing GITHUB_CLIENT_ID')
+    }
+
+    if(!clientSecret || clientSecret.length === 0) {
+        throw new Error('Missing GITHUB_CLIENT_SECRET')
     }
 
     return {clientId, clientSecret}
@@ -32,6 +48,10 @@ export const authOptions: NextAuthOptions = {
             clientId: getGoogleCredentials().clientId,
             clientSecret: getGoogleCredentials().clientSecret,
         }),
+        GitHubProvider({
+            clientId: getGithubCredentials().clientId,
+            clientSecret: getGithubCredentials().clientSecret,
+          })
     ],
     callbacks: {
         async jwt ({token, user}) {
@@ -65,3 +85,4 @@ export const authOptions: NextAuthOptions = {
         }
     },
 }
+//NEXTAUTH_URL = "http://localhost:3000/dashboard/api/auth"

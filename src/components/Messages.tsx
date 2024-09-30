@@ -42,7 +42,7 @@ const Messages: FC<MessagesProps> = ({initialMessages, sessionId, chatPartner, s
         return format(timestamp, 'HH:mm')
     }
 
-  return ( <div id='messages' className='flex h-full flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch'>
+  return ( <div id='messages' className='flex h-full flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-4 scrolling-touch'>
         <div ref={scrollDownRef} />
             {messages.map((message, index) => {
                 const isCurrentUser = message.senderId === sessionId
@@ -57,7 +57,7 @@ const Messages: FC<MessagesProps> = ({initialMessages, sessionId, chatPartner, s
                                 'order-2 items-start': !isCurrentUser,
                             })}>
                                 <span className={cn('px-4 py-2 rounded-lg inline-block', {
-                                    'bg-orange-600 text-white ': isCurrentUser,
+                                    'bg-[#ea580c] text-white ': isCurrentUser,
                                     'bg-gray-200 text-gray-900': !isCurrentUser,
                                     'rounded-br-none': !hasNextMessageFromSameUser && isCurrentUser,
                                     'rounded-bl-none': !hasNextMessageFromSameUser && !isCurrentUser,
