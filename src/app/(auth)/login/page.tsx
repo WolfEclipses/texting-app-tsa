@@ -33,11 +33,11 @@ const Page: FC = () => {
       }
   }
   return ( <>
-    <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-        <div className='w-full flex flex-col items-center max-w-md space-y-8'>
-          <div className='flex flex-col items-center gap-8'>
+    <div className='flex h-screen items-center justify-center py- px-4 sm:px-6 lg:px-8 dark:bg-zinc-800'>
+        <div className='w-full flex flex-col items-center max-w-md space-y-3'>
+          <div className='flex flex-col items-center'>
             <Icons.Logo className='h-41 w-auto flex '/>
-            <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
+            <h2 className=' text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-zinc-300'>
                 Sign in to your account
             </h2>
           </div>

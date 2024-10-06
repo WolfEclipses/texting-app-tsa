@@ -1,16 +1,12 @@
 import Providers from '@/components/Providers';
-import "./globals.css";
+import './globals.css';
 
 export const metadata = {
-  title: "Corvus Crow Nest",
-  description: "Education Edition",
+  title: 'Corvus Crow Nest',
+  description: 'Education Edition',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -18,9 +14,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
+                // Dark mode script
                 const darkMode = localStorage.getItem('darkMode');
                 if (darkMode === 'true') {
                   document.documentElement.classList.add('dark');
+                }
+
+                // Accent color script
+                const accentColor = localStorage.getItem('accentColor');
+                if (accentColor) {
+                  document.documentElement.style.setProperty('--accent-color', JSON.parse(accentColor));
                 }
               })();
             `,

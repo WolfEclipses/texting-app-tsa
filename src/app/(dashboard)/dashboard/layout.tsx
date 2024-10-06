@@ -10,9 +10,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ReactNode} from 'react'
-import { Settings } from 'lucide-react'
 import MobileChatLayout from '@/components/MobileChatLayout'
 import { SidebarOption } from '@/types/typings'
+import { SettingsButton } from '@/components/SettingsButton'
 
 interface LayoutProps {
     children: ReactNode
@@ -76,8 +76,8 @@ const Layout = async ({ children }: LayoutProps) => {
                                 return(
                                     <li key={option.id}>
                                         <Link href={option.href}
-                                        className='text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
-                                        <span className='text-gray-400 border-gray-200 group-hover:border-orange-600 group-hover:text-orange-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900'>
+                                        className='text-gray-700 hover:text-accent hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
+                                        <span className='text-gray-400 border-gray-200 group-hover:border-accent group-hover:text-accent flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900'>
                                             <Icon className='h-4 w-4 ' />
                                         </span>
                                         <span className='truncate'>{option.name}</span>
@@ -96,8 +96,8 @@ const Layout = async ({ children }: LayoutProps) => {
                                 return(
                                     <li key={option.id}>
                                         <Link href={option.href}
-                                        className='text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
-                                        <span className='text-gray-400 border-gray-200 group-hover:border-orange-600 group-hover:text-orange-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900 '>
+                                        className='text-gray-700 hover:text-accent hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
+                                        <span className='text-gray-400 border-gray-200 group-hover:border-accent group-hover:text-accent flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900 '>
                                             <Icon className='h-4 w-4' />
                                         </span>
                                         <span className='truncate'>{option.name}</span>
@@ -131,15 +131,13 @@ const Layout = async ({ children }: LayoutProps) => {
                             </div>
                         </div>
 
-                        <span className='hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950'>
-                            <Link href='/dashboard/settings' className='text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
-                                <span>
-                                    <Settings className='w-4 h-4 dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200' />
-                                </span>
+                        <span className='hover:text-accent hover:bg-gray-200 group flex rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950'>
+                            <Link href={'/dashboard/settings'}>
+                                <SettingsButton className='h-full aspect-square' />
                             </Link>
                         </span>
 
-                        <span className='hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950 '>
+                        <span className='hover:text-accent hover:bg-gray-200 group flex rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950'>
                             <SignOutButton className='h-full aspect-square '/>
                         </span>
 
@@ -148,7 +146,7 @@ const Layout = async ({ children }: LayoutProps) => {
             </nav>
         </div>
         
-        <aside className='max-h-screen container py-16 w-full dark:bg-zinc-800'>{children}</aside>   
+        <aside className='max-h-screen container py-12 w-full dark:bg-zinc-800'>{children}</aside>   
     </div>
     
     )

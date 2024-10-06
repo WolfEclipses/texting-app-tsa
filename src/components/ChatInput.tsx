@@ -64,12 +64,12 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
             let response;
             if (gifSource === 'giphy') {
                 response = await axios.get(
-                    `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${gifSearch}&limit=10`
+                    `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${gifSearch}&limit=30`
                 );
                 setGifs(response.data.data);
             } else if (gifSource === 'tenor') {
                 response = await axios.get(
-                    `https://api.tenor.com/v1/search?q=${gifSearch}&key=${TENOR_API_KEY}&limit=10`
+                    `https://api.tenor.com/v1/search?q=${gifSearch}&key=${TENOR_API_KEY}&limit=30`
                 );
                 setGifs(response.data.results);
             }
@@ -86,7 +86,7 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
             const textAfter = input.substring(end, input.length);
             setInput(textBefore + gifUrl + textAfter);
             setShowGifPicker(false);
-            sendMessage
+            sendMessage();
         }
     };
 
@@ -136,7 +136,7 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
                     />
                 </div>
             )}
-            <div className="py-2 px-2 relative flex items-center overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-orange-600 dark:text-zinc-300">
+            <div className="py-2 px-2 relative flex items-center overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-accent dark:text-zinc-300">
                 {/* Emoji button placed on the left side */}
                 <button
                     type="button"

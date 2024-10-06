@@ -57,7 +57,7 @@ const Messages: FC<MessagesProps> = ({initialMessages, sessionId, chatPartner, s
                                 'order-2 items-start': !isCurrentUser,
                             })}>
                                 <span className={cn('px-4 py-2 rounded-lg inline-block', {
-                                    'bg-[#ea580c] text-white ': isCurrentUser,
+                                    'bg-accent text-white ': isCurrentUser,
                                     'bg-gray-200 text-gray-900': !isCurrentUser,
                                     'rounded-br-none': !hasNextMessageFromSameUser && isCurrentUser,
                                     'rounded-bl-none': !hasNextMessageFromSameUser && !isCurrentUser,

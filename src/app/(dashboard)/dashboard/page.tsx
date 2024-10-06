@@ -50,7 +50,7 @@ const page = async ({}) => {
         friendsWithLastMessage.map((friend) => (
           <div key={friend.id} className='relative my-1.5 bg-zinc-50 dark:bg-zinc-900 dark:border-zinc-500 border border-zinc-200 p-3 rounded-md dark:text-zinc-300 group dark:hover:bg-neutral-950'>
             <div className='absolute right-4 inset-y-0 flex items-center'>
-                <ChevronRight className='h-7 w-7 text-zinc-400 group-hover:text-orange-600' />
+                <ChevronRight className='h-7 w-7 text-zinc-400 group-hover:text-accent' />
             </div>
             <Link href={`/dashboard/chat/${chatHrefConstructor(session.user.id, friend.id)}`} className='relative sm:flex'>
               <div className='mb-4 flex-shrink-0 sm:mb-0 sm:mr-4'>
@@ -59,7 +59,7 @@ const page = async ({}) => {
                 </div>
               </div>
               <div>
-                <h4 className='text-lg font-semibold group-hover:text-orange-600'>{friend.name}</h4>
+                <h4 className='text-lg font-semibold group-hover:text-accent'>{friend.name}</h4>
                 <p className='mt-1 max-w-md'>
                   <span className='text-zinc-400'>
                     {friend.lastMessage?.senderId === session.user.id ? 'You: ' : ''}

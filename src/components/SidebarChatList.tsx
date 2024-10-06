@@ -77,8 +77,8 @@ const SidebarChatList: FC<SidebarChatListProps> = ({friends, sessionId}) => {
                     return unseenMsg.senderId === friend.id
                 }).length
                 return <li key={friend.id}>
-                    <a href={`/dashboard/chat/${chatHrefConstructor(sessionId, friend.id)}`} className=' dark:text-zinc-300 text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex items-center gap-x-3 rounded-md p-2 text-m leading-6 font-semibold dark:hover:bg-zinc-800'>{friend.name} {unseenMessagesCount > 0 ? (
-                    <div className='bg-orange-600 font-medium text-xs text-white w-4 h-4 rounded-full flex justify-center items-center'>
+                    <a href={`/dashboard/chat/${chatHrefConstructor(sessionId, friend.id)}`} className=' dark:text-zinc-300 text-gray-700 hover:text-accent hover:bg-gray-200 group flex items-center gap-x-3 rounded-md p-2 text-m leading-6 font-semibold dark:hover:bg-zinc-800'>{friend.name} {unseenMessagesCount > 0 ? (
+                    <div className='bg-accent font-medium text-xs text-white w-4 h-4 rounded-full flex justify-center items-center'>
                         {unseenMessagesCount}
                     </div>) : null}</a>
                 </li>

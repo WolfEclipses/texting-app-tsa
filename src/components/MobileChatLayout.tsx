@@ -51,12 +51,12 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebar
   return (
     <div className='fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4 dark:bg-zinc-900'>
       <div className='w-full flex justify-between items-center'>
-        <div className='dark:bg-zinc-900 rounded-md w-autow-auto h-auto dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200'>
+        <div className='dark:bg-zinc-900 rounded-md w-autow-auto h-auto dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-accent text-zinc-900 dark:text-zinc-200'>
             <Link href='/dashboard'className='flex h-12 shrink-0'>
                 <Icons.Logo className='h-12 w-auto' />
             </Link>
         </div>
-        <Button onClick={() => setOpen(true)} className='gap-4 bg-zinc-900 hover:text-orange-600'>
+        <Button onClick={() => setOpen(true)} className='gap-4 bg-zinc-900 hover:text-accent'>
           Menu <Menu className='h-6 w-6' />
         </Button>
       </div>
@@ -85,7 +85,7 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebar
                           <div className='ml-3 flex h-7 items-center'>
                             <button
                               type='button'
-                              className='rounded-md bg-white dark:bg-zinc-800 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2'
+                              className='rounded-md bg-white dark:bg-zinc-800 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2'
                               onClick={() => setOpen(false)}>
                               <span className='sr-only'>Close panel</span>
                               <X className='h-6 w-6' aria-hidden='true' />
@@ -116,8 +116,8 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebar
                                 return(
                                     <li key={option.id}>
                                         <Link href={option.href}
-                                        className='text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
-                                        <span className='text-gray-400 border-gray-200 group-hover:border-orange-600 group-hover:text-orange-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900'>
+                                        className='text-gray-700 hover:text-accent hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
+                                        <span className='text-gray-400 border-gray-200 group-hover:border-accent group-hover:text-accent flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900'>
                                             <Icon className='h-4 w-4 ' />
                                         </span>
                                         <span className='truncate'>{option.name}</span>
@@ -136,8 +136,8 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebar
                                 return(
                                     <li key={option.id}>
                                         <Link href={option.href}
-                                        className='text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
-                                        <span className='text-gray-400 border-gray-200 group-hover:border-orange-600 group-hover:text-orange-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900 '>
+                                        className='text-gray-700 hover:text-accent hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
+                                        <span className='text-gray-400 border-gray-200 group-hover:border-accent group-hover:text-accent flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625ram] font-medium bg-white dark:text-zinc-300 dark:bg-zinc-900 '>
                                             <Icon className='h-4 w-4' />
                                         </span>
                                         <span className='truncate'>{option.name}</span>
@@ -171,15 +171,15 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebar
                             </div>
                         </div>
 
-                        <span className='hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950'>
-                            <Link href='/dashboard/settings' className='text-gray-700 hover:text-orange-600 hover:bg-gray-200 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
+                        <span className='hover:text-accent hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950'>
+                            <Link href='/dashboard/settings' className='text-gray-700 hover:text-accent hover:bg-gray-200 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold dark:text-zinc-300 dark:hover:bg-zinc-800'>
                                 <span>
-                                    <Settings className='w-4 h-4 dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200' />
+                                    <Settings className='w-4 h-4 dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-accent text-zinc-900 dark:text-zinc-200' />
                                 </span>
                             </Link>
                         </span>
 
-                        <span className='hover:text-orange-600 hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950 '>
+                        <span className='hover:text-accent hover:bg-gray-200 group flex gap-3 rounded-md p-2 text-sm leading-6 font-semibold dark:hover:bg-neutral-950 '>
                             <SignOutButton className='h-full aspect-square '/>
                         </span>
 

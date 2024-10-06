@@ -51,17 +51,17 @@ const DarkModeButton: FC<DarkModeProps> = ({ ...props }) => {
     >
       {isDarkMode ? (
         <div>
-          <ToggleRight className="w-auto h-auto dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200" />
-          <Moon className="w-auto h-auto dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200" />
-          <span className="text-md font-bold leading-6 text-gray-800 dark:text-zinc-300 text-center">
+          <ToggleRight className="w-auto h-auto dark:focus:ring-zinc-900 group-hover:text-accent dark:text-zinc-200" />
+          <Moon className="w-auto h-auto dark:focus:ring-zinc-900 group-hover:text-accent dark:text-zinc-200" />
+          <span className="text-md font-bold leading-6 dark:text-zinc-300 group-hover:text-accent text-center">
             Dark Mode
           </span>
         </div>
       ) : (
         <div>
-          <ToggleLeft className="w-auto h-auto dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200" />
-          <Sun className="w-auto h-auto dark:hover:bg-zinc-800 dark:focus:ring-zinc-900 group-hover:text-orange-600 text-zinc-900 dark:text-zinc-200" />
-          <span className="text-md font-bold leading-6 text-gray-800 dark:text-zinc-300 text-center">
+          <ToggleLeft className="w-auto h-auto group-hover:text-accent text-zinc-900" />
+          <Sun className="w-auto h-auto group-hover:text-accent text-zinc-900" />
+          <span className="text-md font-bold leading-6 group-hover:text-accent text-gray-800 text-center">
             Light Mode
           </span>
         </div>
